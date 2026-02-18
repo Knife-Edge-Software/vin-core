@@ -1,0 +1,112 @@
+# Card Grid — Auto-Layout Demo
+# Demonstrates row/column layout with nested card content
+
+page "Dashboard" 740x560
+
+heading "Project Dashboard" 24,20
+  level: 1
+
+separator "top-sep" 24,52 692x2
+
+# -- Stats Row --
+row 24,70 692x100
+  gap: 16
+
+  card "Total Tasks" 160x100
+    layout: column
+    padding: 10
+    gap: 4
+
+    heading "128"
+      level: 2
+    label "tasks created"
+      font-size: small
+
+  card "Completed" 160x100
+    layout: column
+    padding: 10
+    gap: 4
+
+    heading "94"
+      level: 2
+    badge "73%" 50x18
+      variant: success
+
+  card "In Progress" 160x100
+    layout: column
+    padding: 10
+    gap: 4
+
+    heading "21"
+      level: 2
+    badge "Active" 50x18
+      variant: info
+
+  card "Overdue" 160x100
+    layout: column
+    padding: 10
+    gap: 4
+
+    heading "13"
+      level: 2
+    badge "Alert" 50x18
+      variant: error
+
+# -- Recent Activity --
+panel "activity" 24,190 692x340
+  layout: column
+  padding: 16
+  gap: 12
+
+  row 660x32
+    align: center
+
+    heading "Recent Activity"
+      level: 2
+
+  separator "act-sep" 660x2
+
+  row 660x24
+    gap: 10
+    align: center
+    avatar "JD" 24x24
+      variant: blue
+    label "Jane updated the login page"
+    label "2 min ago"
+      font-size: small
+
+  row 660x24
+    gap: 10
+    align: center
+    avatar "BM" 24x24
+      variant: green
+    label "Bob completed code review"
+    label "15 min ago"
+      font-size: small
+
+  row 660x24
+    gap: 10
+    align: center
+    avatar "AS" 24x24
+      variant: orange
+    label "Alice deployed to staging"
+    label "1 hr ago"
+      font-size: small
+
+  row 660x24
+    gap: 10
+    align: center
+    avatar "TW" 24x24
+      variant: purple
+    label "Tom created new issue #247"
+    label "2 hr ago"
+      font-size: small
+
+  row 660x24
+    gap: 10
+    align: center
+    avatar "CD" 24x24
+      variant: red
+    label "Carol merged PR #189"
+    label "3 hr ago"
+      font-size: small

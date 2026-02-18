@@ -1,0 +1,89 @@
+# User Profile
+# Social platform profile page
+
+page "Profile" 500x680
+
+# -- Cover & Avatar --
+
+image "cover" 0,0 500x140
+  alt: "Cover Photo"
+
+frame "avatar-ring" 30,100 80x80
+
+image "avatar" 32,102 76x76
+  alt: "Avatar"
+
+# -- Identity --
+
+heading "Sarah Chen" 124,120
+  level: 2
+
+label "@sarahchen" 124,146
+  font-size: small
+
+badge "Pro" 210,141 40x22
+  variant: info
+
+label "Full-stack developer. Open source enthusiast." 30,195
+
+label "Building better tools for developers." 30,215
+
+link "sarahchen.dev" 30,240
+
+label "San Francisco, CA" 160,240
+  font-size: small
+
+# -- Stats --
+
+separator "s1" 30,268 440x2
+
+frame "stats" 30,280 440x50
+
+label "342" 60,296
+  bold: true
+
+label "Posts" 60,314
+  font-size: small
+
+label "12.4k" 180,296
+  bold: true
+
+label "Followers" 180,314
+  font-size: small
+
+label "891" 310,296
+  bold: true
+
+label "Following" 310,314
+  font-size: small
+
+separator "s2" 30,340 440x2
+
+# -- Actions --
+
+button "Follow" 30,358 140x34
+  variant: primary
+
+button "Message" 180,358 140x34
+
+button "..." 330,358 40x34
+
+# -- Recent Posts --
+
+label "Recent Posts" 30,412
+  bold: true
+
+frame "post1" 30,436 440x70
+label "Excited to announce our new open source project!" 44,454
+label "Released v2.0 of DevKit with full TypeScript support..." 44,474
+  font-size: small
+
+frame "post2" 30,516 440x70
+label "Thoughts on the future of web development" 44,534
+label "After 10 years of building for the web, here's what I think..." 44,554
+  font-size: small
+
+frame "post3" 30,596 440x70
+label "TIL: CSS Container Queries are amazing" 44,614
+label "Just discovered you can use @container for responsive..." 44,634
+  font-size: small

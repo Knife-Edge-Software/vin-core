@@ -1,0 +1,218 @@
+# Kanban Board
+# Trello / Jira board-style task management
+
+page "Sprint Board" 960x620
+
+# -- Header --
+
+frame "header" 0,0 960x50
+
+heading "Sprint 14 — Wireframe Tools" 16,14
+  level: 2
+
+badge "In Progress" 290,14 84x22
+  variant: warning
+
+button "Filter" 680,10 64x30
+
+button "+ Task" 752,10 74x30
+  variant: primary
+
+button "..." 834,10 36x30
+
+label "Feb 10 – Feb 24" 880,18
+  font-size: small
+
+separator "h-sep" 0,50 960x2
+
+# -- Column: Backlog --
+
+frame "col-backlog" 10,60 225x550
+
+label "Backlog" 22,76
+  bold: true
+
+badge "6" 90,76 24x18
+
+# Card 1
+frame "card1" 18,100 210x72
+label "Design control registry API" 26,114
+  bold: true
+label "Define how controls register" 26,132
+  font-size: small
+label "their properties and renderers" 26,148
+  font-size: small
+badge "Design" 26,162 50x16
+  variant: info
+
+# Card 2
+frame "card2" 18,180 210x58
+label "Add undo/redo to viewer" 26,194
+  bold: true
+label "Track edit history in editor" 26,212
+  font-size: small
+badge "Feature" 26,228 54x16
+  variant: success
+
+# Card 3
+frame "card3" 18,246 210x58
+label "Snap-to-grid positioning" 26,260
+  bold: true
+label "Optional grid alignment" 26,278
+  font-size: small
+badge "Feature" 26,294 54x16
+  variant: success
+
+# Card 4
+frame "card4" 18,312 210x58
+label "Dark mode wireframe theme" 26,326
+  bold: true
+label "Alternate rendering style" 26,344
+  font-size: small
+badge "Design" 26,360 50x16
+  variant: info
+
+# Card 5
+frame "card5" 18,378 210x58
+label "Export to PNG" 26,392
+  bold: true
+label "Canvas-based image export" 26,410
+  font-size: small
+badge "Feature" 26,426 54x16
+  variant: success
+
+# Card 6
+frame "card6" 18,444 210x58
+label "Keyboard shortcut system" 26,458
+  bold: true
+label "Hotkeys for common actions" 26,476
+  font-size: small
+
+# -- Column: In Progress --
+
+frame "col-progress" 245,60 225x550
+
+label "In Progress" 257,76
+  bold: true
+
+badge "3" 340,76 24x18
+  variant: warning
+
+# Card 7
+frame "card7" 253,100 210x86
+label "Implement table control" 261,114
+  bold: true
+label "Render data tables with" 261,132
+  font-size: small
+label "headers, rows, column dividers" 261,148
+  font-size: small
+badge "Feature" 261,166 54x16
+  variant: success
+image "assignee1" 428,166 20x20
+  alt: "DW"
+
+progress "card7-prog" 261,176 170x4
+  value: 60
+
+# Card 8
+frame "card8" 253,194 210x86
+label "Write FORMAT.md spec" 261,208
+  bold: true
+label "AI-friendly format docs" 261,226
+  font-size: small
+label "with examples for each control" 261,242
+  font-size: small
+badge "Docs" 261,260 38x16
+  variant: info
+image "assignee2" 428,260 20x20
+  alt: "AJ"
+
+progress "card8-prog" 261,270 170x4
+  value: 80
+
+# Card 9
+frame "card9" 253,288 210x72
+label "Parser error recovery" 261,302
+  bold: true
+label "Graceful handling of syntax" 261,320
+  font-size: small
+label "errors, skip and continue" 261,336
+  font-size: small
+badge "Bug" 261,350 32x16
+  variant: error
+
+# -- Column: Review --
+
+frame "col-review" 480,60 225x550
+
+label "In Review" 492,76
+  bold: true
+
+badge "2" 568,76 24x18
+  variant: info
+
+# Card 10
+frame "card10" 488,100 210x86
+label "Add progress bar control" 496,114
+  bold: true
+label "Horizontal fill indicator" 496,132
+  font-size: small
+label "with configurable value" 496,148
+  font-size: small
+badge "Feature" 496,166 54x16
+  variant: success
+image "assignee3" 663,166 20x20
+  alt: "BM"
+
+link "PR #247" 496,176
+
+# Card 11
+frame "card11" 488,194 210x72
+label "Badge and icon controls" 496,208
+  bold: true
+label "Status pills and placeholder" 496,226
+  font-size: small
+label "icon rendering" 496,242
+  font-size: small
+badge "Feature" 496,256 54x16
+  variant: success
+
+link "PR #248" 496,266
+
+# -- Column: Done --
+
+frame "col-done" 715,60 235x550
+
+label "Done" 727,76
+  bold: true
+
+badge "4" 764,76 24x18
+  variant: success
+
+# Card 12
+frame "card12" 723,100 220x58
+label "Core parser implementation" 731,114
+  bold: true
+label "Line-oriented .wire parser" 731,132
+  font-size: small
+
+# Card 13
+frame "card13" 723,166 220x58
+label "SVG renderer pipeline" 731,180
+  bold: true
+label "AST to SVG string output" 731,198
+  font-size: small
+
+# Card 14
+frame "card14" 723,232 220x58
+label "Basic control set (12)" 731,246
+  bold: true
+label "label, button, textfield, etc." 731,264
+  font-size: small
+
+# Card 15
+frame "card15" 723,298 220x58
+label "Live preview viewer" 731,312
+  bold: true
+label "Browser editor + SVG preview" 731,330
+  font-size: small

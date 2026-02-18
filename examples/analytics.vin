@@ -1,0 +1,174 @@
+# Analytics Dashboard
+# Data-heavy dashboard with cards, panels, tabs, toggles
+
+page "Analytics" 940x700
+
+# -- Header --
+
+panel "header" 0,0 940x50
+  variant: dark
+
+heading "Analytics" 16,12
+  level: 2
+
+breadcrumb "nav" 140,18
+  items: "Dashboard" | "Traffic" | "This Week"
+
+dropdown "period" 700,10 120x30
+  items: "Today" | "This Week" | "This Month" | "This Year"
+  selected: 1
+
+avatar "U" 888,5 40x40
+  variant: green
+
+# -- KPI Cards --
+
+card "kpi1" 20,66 215x90
+label "Page Views" 36,86
+  font-size: small
+heading "284,302" 36,112
+badge "+12.5%" 150,106 60x20
+  variant: success
+
+card "kpi2" 250,66 215x90
+label "Unique Visitors" 266,86
+  font-size: small
+heading "42,847" 266,112
+badge "+8.3%" 380,106 56x20
+  variant: success
+
+card "kpi3" 480,66 215x90
+label "Bounce Rate" 496,86
+  font-size: small
+heading "34.2%" 496,112
+badge "-2.1%" 610,106 50x20
+  variant: success
+
+card "kpi4" 710,66 210x90
+label "Avg Session" 726,86
+  font-size: small
+heading "4m 32s" 726,112
+badge "+0.8%" 840,106 52x20
+  variant: warning
+
+# -- Main Chart Area --
+
+card "chart-card" 20,172 600x260
+
+tabs "chart-tabs" 22,174 596x32
+  items: "Overview" | "Traffic" | "Conversions" | "Revenue"
+  active: 0
+
+frame "chart" 36,218 570x180
+
+# Chart Y-axis labels
+label "300k" 42,230
+  font-size: small
+label "200k" 42,270
+  font-size: small
+label "100k" 42,310
+  font-size: small
+label "0" 52,350
+  font-size: small
+
+# Chart bars (simplified)
+progress "mon" 90,340 70x8
+  value: 45
+progress "tue" 170,340 70x8
+  value: 62
+progress "wed" 250,340 70x8
+  value: 78
+progress "thu" 330,340 70x8
+  value: 55
+progress "fri" 410,340 70x8
+  value: 90
+progress "sat" 490,340 70x8
+  value: 30
+
+label "Mon  Tue  Wed  Thu   Fri   Sat" 90,370
+  font-size: small
+
+toggle "Compare to previous period" 36,404
+  on: false
+
+# -- Right Panel: Top Pages --
+
+card "top-pages" 636,172 284x260
+
+label "Top Pages" 652,192
+  bold: true
+
+table "pages" 638,210 280x210
+  columns: "Page" | "Views" | "Rate"
+  rows: 7
+
+# -- Bottom Section --
+
+splitter "bottom-split" 20,448 900x8
+
+# Traffic Sources
+
+card "sources-card" 20,472 440x210
+
+label "Traffic Sources" 36,492
+  bold: true
+
+# Simplified donut chart placeholder
+frame "donut" 36,510 160x150
+
+# Legend
+label "Direct" 220,520
+  font-size: small
+badge "38%" 320,516 42x18
+  variant: info
+
+label "Organic Search" 220,546
+  font-size: small
+badge "28%" 320,542 42x18
+  variant: success
+
+label "Social Media" 220,572
+  font-size: small
+badge "18%" 320,568 42x18
+  variant: warning
+
+label "Referral" 220,598
+  font-size: small
+badge "10%" 320,594 42x18
+
+label "Email" 220,624
+  font-size: small
+badge "6%" 320,620 42x18
+  variant: error
+
+# Device Breakdown
+
+card "devices-card" 480,472 440x210
+
+label "Devices" 496,492
+  bold: true
+
+tabs "device-tabs" 482,508 436x30
+  items: "All" | "Desktop" | "Mobile" | "Tablet"
+  active: 0
+
+label "Desktop" 496,556
+  font-size: small
+progress "desktop" 496,572 300x8
+  value: 62
+label "62%" 806,560
+  font-size: small
+
+label "Mobile" 496,598
+  font-size: small
+progress "mobile" 496,614 300x8
+  value: 30
+label "30%" 806,602
+  font-size: small
+
+label "Tablet" 496,640
+  font-size: small
+progress "tablet" 496,656 300x8
+  value: 8
+label "8%" 806,644
+  font-size: small

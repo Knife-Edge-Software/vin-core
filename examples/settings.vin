@@ -1,0 +1,64 @@
+# Settings Page
+# Simple preferences form with sections
+
+page "Settings" 420x580
+
+heading "Settings" 24,24
+
+# -- Appearance --
+
+label "Appearance" 24,68
+  bold: true
+
+label "Theme" 24,96
+
+dropdown "theme" 24,116 372x32
+  items: "Light" | "Dark" | "System Default"
+  selected: 0
+
+label "Font Size" 24,164
+
+dropdown "font-size" 24,184 372x32
+  items: "Small (12px)" | "Medium (14px)" | "Large (16px)"
+  selected: 1
+
+separator "s1" 24,234 372x2
+
+# -- Notifications --
+
+label "Notifications" 24,252
+  bold: true
+
+checkbox "Email notifications" 24,280
+  checked: true
+
+checkbox "Push notifications" 24,308
+  checked: true
+
+checkbox "Weekly digest" 24,336
+
+checkbox "Marketing updates" 24,364
+
+separator "s2" 24,400 372x2
+
+# -- Danger Zone --
+
+label "Account" 24,418
+  bold: true
+
+label "Permanently delete your account and all data." 24,444
+  font-size: small
+
+button "Export Data" 24,472 178x34
+
+button "Delete Account" 214,472 178x34
+  variant: danger
+
+# -- Footer --
+
+separator "s3" 24,526 372x2
+
+button "Save Changes" 24,542 178x36
+  variant: primary
+
+button "Cancel" 214,542 178x36

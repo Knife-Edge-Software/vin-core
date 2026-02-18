@@ -1,0 +1,61 @@
+# Multi-Step Signup
+# Registration wizard with progress indicator
+
+page "Create Account" 440x520
+
+# -- Progress --
+
+progress "step" 40,20 360x6
+  value: 33
+
+label "Step 1 of 3" 175,42
+  font-size: small
+
+# -- Form --
+
+heading "Create Your Account" 40,70
+  level: 2
+
+label "Join 10,000+ developers already using the platform." 40,105
+  font-size: small
+
+# Name row
+label "First Name" 40,145
+
+textfield "first" 40,165 172x32
+  placeholder: "Jane"
+
+label "228" 228,145
+
+textfield "last" 228,165 172x32
+  placeholder: "Smith"
+
+# Email
+label "Email Address" 40,215
+
+textfield "email" 40,235 360x32
+  placeholder: "jane@company.com"
+
+# Password
+label "Password" 40,285
+
+textfield "password" 40,305 360x32
+  placeholder: "At least 8 characters"
+  mask: true
+
+label "Must contain a letter, number, and special character." 40,342
+  font-size: small
+
+# Terms
+checkbox "I agree to the Terms of Service and Privacy Policy" 40,375
+
+# Actions
+button "Continue" 40,420 360x38
+  variant: primary
+
+separator "s1" 40,475 360x2
+
+label "Already have an account?" 130,498
+  font-size: small
+
+link "Sign in" 305,498

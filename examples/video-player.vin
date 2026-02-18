@@ -1,0 +1,139 @@
+# Video Streaming App
+# Netflix-inspired layout with cards, panels, avatars, and modals
+
+page "Watch" 900x680
+
+# -- Nav Bar --
+
+panel "nav" 0,0 900x48
+  variant: dark
+
+heading "StreamBox" 16,12
+  level: 2
+
+tabs "nav-tabs" 160,7 400x34
+  items: "Home" | "Movies" | "Series" | "My List"
+  active: 0
+
+textfield "search" 640,9 180x30
+  placeholder: "Search..."
+
+avatar "U" 836,4 40x40
+  variant: purple
+
+# -- Hero / Featured --
+
+panel "hero" 0,48 900x240
+  variant: dark
+
+image "hero-poster" 30,68 180x200
+  alt: "Featured Film"
+
+heading "The Last Frontier" 230,80
+  level: 1
+
+label "2026 — Sci-Fi — 2h 18m" 230,112
+  font-size: small
+
+badge "98% Match" 230,136 80x22
+  variant: success
+
+badge "PG-13" 318,136 52x22
+
+label "When humanity's final colony ship discovers a habitable" 230,172
+label "world already claimed by another civilization, one crew" 230,192
+label "member must bridge two species to prevent extinction." 230,212
+
+button "Play" 230,240 100x36
+  variant: primary
+
+button "+ My List" 340,240 100x36
+
+button "Details" 450,240 80x36
+
+# -- Trending Section --
+
+separator "s1" 0,296 900x2
+
+label "Trending Now" 20,318
+  bold: true
+
+card "t1" 20,338 164x120
+image "p1" 22,340 160x90
+  alt: "Movie 1"
+label "Neon Nights" 28,446
+  font-size: small
+
+card "t2" 198,338 164x120
+image "p2" 200,340 160x90
+  alt: "Movie 2"
+label "Deep Current" 204,446
+  font-size: small
+
+card "t3" 376,338 164x120
+image "p3" 378,340 160x90
+  alt: "Movie 3"
+label "Cloud Atlas II" 382,446
+  font-size: small
+
+card "t4" 554,338 164x120
+image "p4" 556,340 160x90
+  alt: "Movie 4"
+label "The Algorithm" 560,446
+  font-size: small
+
+card "t5" 732,338 164x120
+image "p5" 734,340 160x90
+  alt: "Movie 5"
+label "Last Light" 738,446
+  font-size: small
+
+# -- Continue Watching --
+
+label "Continue Watching" 20,480
+  bold: true
+
+card "c1" 20,500 164x120
+image "cw1" 22,502 160x90
+  alt: "Continue 1"
+progress "cp1" 22,596 160x4
+  value: 65
+label "Ep 4 — 32m left" 28,614
+  font-size: small
+
+card "c2" 198,500 164x120
+image "cw2" 200,502 160x90
+  alt: "Continue 2"
+progress "cp2" 200,596 160x4
+  value: 20
+label "Ep 1 — 48m left" 204,614
+  font-size: small
+
+card "c3" 376,500 164x120
+image "cw3" 378,502 160x90
+  alt: "Continue 3"
+progress "cp3" 378,596 160x4
+  value: 88
+label "Ep 12 — 8m left" 382,614
+  font-size: small
+
+card "c4" 554,500 164x120
+image "cw4" 556,502 160x90
+  alt: "Continue 4"
+progress "cp4" 556,596 160x4
+  value: 45
+label "1h 12m left" 560,614
+  font-size: small
+
+card "c5" 732,500 164x120
+image "cw5" 734,502 160x90
+  alt: "Continue 5"
+progress "cp5" 734,596 160x4
+  value: 10
+label "Ep 2 — 52m left" 738,614
+  font-size: small
+
+# -- Tooltip example --
+
+tooltip "Double-click for fullscreen" 360,642 180x28
+  position: top

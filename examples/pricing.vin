@@ -1,0 +1,76 @@
+# SaaS Pricing Page
+# Three-tier comparison layout
+
+page "Pricing" 820x600
+
+heading "Choose Your Plan" 280,24
+  level: 1
+
+label "Start free. Upgrade when you need to." 270,60
+  font-size: small
+
+# -- Free Tier --
+
+frame "Free" 20,100 250x440
+
+heading "Free" 40,130
+  level: 2
+
+heading "$0" 40,165
+  level: 1
+
+label "/month" 80,165
+  font-size: small
+
+separator "f-sep" 40,190 210x2
+
+list "free-features" 30,200 210x220
+  items: "1 project" | "500 MB storage" | "Basic analytics" | "Email support" | "Community access" | "API access (100/day)" | "Single user"
+
+button "Get Started" 40,440 190x36
+
+# -- Pro Tier --
+
+frame "Pro" 285,100 250x440
+
+heading "Pro" 305,130
+  level: 2
+
+badge "Popular" 430,130 70x22
+  variant: info
+
+heading "$19" 305,165
+  level: 1
+
+label "/month" 365,165
+  font-size: small
+
+separator "p-sep" 305,190 210x2
+
+list "pro-features" 295,200 210x220
+  items: "25 projects" | "50 GB storage" | "Advanced analytics" | "Priority support" | "Team collaboration" | "API access (10k/day)" | "Up to 10 users" | "Custom integrations"
+
+button "Start Free Trial" 305,440 190x36
+  variant: primary
+
+# -- Enterprise Tier --
+
+frame "Enterprise" 550,100 250x440
+
+heading "Enterprise" 570,130
+  level: 2
+
+heading "Custom" 570,165
+  level: 1
+
+separator "e-sep" 570,190 210x2
+
+list "ent-features" 560,200 210x220
+  items: "Unlimited projects" | "Unlimited storage" | "Custom analytics" | "Dedicated support" | "SSO / SAML" | "Unlimited API" | "Unlimited users" | "SLA guarantee" | "On-premise option"
+
+button "Contact Sales" 570,440 190x36
+
+# -- Footer --
+
+label "All plans include a 14-day money-back guarantee." 250,560
+  font-size: small

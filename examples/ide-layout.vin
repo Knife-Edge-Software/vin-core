@@ -1,0 +1,216 @@
+# Code Editor / IDE
+# VS Code-inspired layout with panels, splitters, tabs, and breadcrumbs
+
+page "IDE" 1000x660
+
+# -- Title Bar --
+
+panel "titlebar" 0,0 1000x32
+  variant: dark
+
+label "CodeStudio — project/src/app.ts" 16,10
+  font-size: small
+
+# -- Activity Bar --
+
+panel "activity" 0,32 48x628
+  variant: dark
+
+icon "folder" 12,48 24x24
+
+icon "search" 12,84 24x24
+
+icon "git-branch" 12,120 24x24
+
+icon "bug" 12,156 24x24
+
+icon "puzzle" 12,192 24x24
+
+icon "gear" 12,600 24x24
+
+# -- File Explorer --
+
+panel "explorer" 48,32 220x628
+
+label "EXPLORER" 60,48
+  font-size: small
+  bold: true
+
+list "filetree" 52,60 212x300
+  items: "src/" | "  app.ts" | "  config.ts" | "  utils/" | "    helpers.ts" | "    format.ts" | "  components/" | "    Header.tsx" | "    Sidebar.tsx" | "    Editor.tsx" | "  styles/" | "    global.css"
+  selected: 1
+
+separator "exp-sep" 60,370 200x2
+
+label "OUTLINE" 60,386
+  font-size: small
+  bold: true
+
+list "outline" 52,400 212x120
+  items: "App" | "  constructor" | "  init()" | "  render()" | "  handleEvent()"
+
+separator "exp-sep2" 60,530 200x2
+
+label "TIMELINE" 60,546
+  font-size: small
+  bold: true
+
+list "timeline" 52,560 212x90
+  items: "5m ago — Saved" | "1h ago — Edited config" | "3h ago — Added utils"
+  font-size: small
+
+# -- Splitter between explorer and editor --
+
+splitter "left-split" 268,32 8x628
+  direction: vertical
+
+# -- Editor Area --
+
+# Editor tabs
+
+tabs "editor-tabs" 276,32 500x32
+  items: "app.ts" | "config.ts" | "helpers.ts"
+  active: 0
+
+# Breadcrumb
+
+breadcrumb "file-path" 286,74
+  items: "src" | "app.ts" | "App" | "render()"
+
+# Code area (just a panel representing the editor)
+
+panel "code" 276,92 500x408
+
+# Fake code lines using labels
+label "1   import { Config } from './config';" 286,112
+  font-size: small
+
+label "2   import { format } from './utils/format';" 286,130
+  font-size: small
+
+label "3" 286,148
+  font-size: small
+
+label "4   export class App {" 286,166
+  font-size: small
+
+label "5     private config: Config;" 286,184
+  font-size: small
+
+label "6" 286,202
+  font-size: small
+
+label "7     constructor() {" 286,220
+  font-size: small
+
+label "8       this.config = new Config();" 286,238
+  font-size: small
+
+label "9     }" 286,256
+  font-size: small
+
+label "10" 286,274
+  font-size: small
+
+label "11    render() {" 286,292
+  font-size: small
+
+label "12      return format(this.config);" 286,310
+  font-size: small
+
+label "13    }" 286,328
+  font-size: small
+
+label "14  }" 286,346
+  font-size: small
+
+# -- Minimap hint --
+
+panel "minimap" 720,92 56x408
+
+# -- Splitter between editor and right panel --
+
+splitter "right-split" 776,32 8x628
+  direction: vertical
+
+# -- Right Panel (AI Chat) --
+
+panel "ai-panel" 784,32 216x628
+
+tabs "ai-tabs" 784,32 216x32
+  items: "AI Chat" | "Terminal"
+  active: 0
+
+# Chat messages
+
+avatar "AI" 800,80 28x28
+  variant: blue
+
+label "I can help you refactor" 836,88
+  font-size: small
+
+label "the render() method." 836,104
+  font-size: small
+
+avatar "U" 800,132 28x28
+  variant: green
+
+label "Show me how to add" 836,140
+  font-size: small
+
+label "error handling." 836,156
+  font-size: small
+
+avatar "AI" 800,184 28x28
+  variant: blue
+
+label "Here's the updated code" 836,192
+  font-size: small
+
+label "with try/catch:" 836,208
+  font-size: small
+
+frame "code-block" 800,224 188x80
+
+label "render() {" 808,242
+  font-size: small
+
+label "  try {" 808,258
+  font-size: small
+
+label "    return format(..." 808,274
+  font-size: small
+
+label "  } catch (e) { ... }" 808,290
+  font-size: small
+
+# Chat input
+
+textfield "ai-input" 792,614 162x30
+  placeholder: "Ask AI..."
+
+button ">" 960,614 30x30
+  variant: primary
+
+# -- Bottom Panel --
+
+panel "statusbar" 0,628 1000x32
+  variant: dark
+
+label "main" 60,640
+  font-size: small
+
+label "TypeScript" 200,640
+  font-size: small
+
+label "UTF-8" 340,640
+  font-size: small
+
+label "Ln 12, Col 35" 460,640
+  font-size: small
+
+badge "0 Errors" 800,636 68x20
+  variant: success
+
+badge "2 Warnings" 876,636 80x20
+  variant: warning

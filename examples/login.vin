@@ -1,0 +1,34 @@
+# Login Screen
+# A typical authentication form
+
+page "Login" 400x450
+
+frame "Sign In" 20,20 360x340
+
+heading "Welcome Back" 50,50
+  level: 2
+
+label "Email" 50,95
+
+textfield "Email" 50,115 300x32
+  placeholder: "you@example.com"
+
+label "Password" 50,165
+
+textfield "Password" 50,185 300x32
+  placeholder: "Enter your password"
+  mask: true
+
+checkbox "Remember me" 50,230
+
+button "Sign In" 50,270 300x36
+  variant: primary
+
+separator "divider" 50,325 300x2
+
+link "Forgot your password?" 115,345
+
+label "Don't have an account?" 50,385
+  font-size: small
+
+link "Create one here" 195,385

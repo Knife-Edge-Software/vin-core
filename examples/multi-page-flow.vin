@@ -1,0 +1,57 @@
+vin-format: 1
+
+page "Welcome" 400x500
+
+heading "Welcome to Acme" 40,40
+  level: 1
+
+label "Get started in just a few steps." 40,90
+  font-size: large
+
+image "hero" 40,140 320x180
+  alt: "Welcome illustration"
+
+button "Get Started" 40,350 320x40
+  variant: primary
+
+link "Already have an account? Sign in" 40,410
+
+page "Create Account" 400x500
+
+heading "Create Account" 40,40
+  level: 2
+
+label "Name" 40,90
+textfield "name" 40,110 320x32
+  placeholder: "Your full name"
+
+label "Email" 40,160
+textfield "email" 40,180 320x32
+  placeholder: "you@example.com"
+
+label "Password" 40,230
+textfield "password" 40,250 320x32
+  mask: true
+  placeholder: "Choose a password"
+
+button "Create Account" 40,310 320x40
+  variant: primary
+
+button "Back" 40,370 150x36
+
+page "All Set" 400x500
+
+heading "You're All Set!" 40,80
+  level: 1
+
+icon "check" 175,160 50x50
+  name: "checkmark"
+
+label "Your account has been created." 40,240
+  align: center
+
+label "Start exploring the dashboard." 40,270
+  align: center
+
+button "Go to Dashboard" 40,340 320x40
+  variant: primary

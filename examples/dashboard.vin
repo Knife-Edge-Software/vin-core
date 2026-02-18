@@ -1,0 +1,90 @@
+# Dashboard
+# A project management overview screen
+
+page "Dashboard" 800x600
+
+# -- Header --
+
+frame "header" 0,0 800x50
+
+heading "ProjectHub" 16,14
+  level: 2
+
+button "New Project" 580,10 110x30
+  variant: primary
+
+button "Settings" 700,10 80x30
+
+# -- Sidebar --
+
+frame "sidebar" 0,50 200x550
+
+label "Navigation" 16,70
+  font-size: small
+  bold: true
+
+list "nav" 10,85 180x180
+  items: "Dashboard" | "Projects" | "Team" | "Reports" | "Calendar"
+  selected: 0
+
+separator "sidebar-sep" 16,280 168x2
+
+label "Favorites" 16,295
+  font-size: small
+  bold: true
+
+list "favorites" 10,310 180x96
+  items: "Project Alpha" | "Design System" | "Q1 Planning" | "Bug Tracker"
+
+# -- Main content --
+
+heading "Overview" 220,70
+
+# Stats row
+frame "stat1" 220,100 175x80
+label "Total Projects" 235,118
+  font-size: small
+heading "24" 235,145
+
+frame "stat2" 410,100 175x80
+label "Active Tasks" 425,118
+  font-size: small
+heading "142" 425,145
+
+frame "stat3" 600,100 175x80
+label "Team Members" 615,118
+  font-size: small
+heading "8" 615,145
+
+# Recent activity table
+label "Recent Activity" 220,200
+  bold: true
+
+table "activity" 220,220 555x180
+  columns: "Task" | "Project" | "Status" | "Updated"
+  rows: 6
+
+# Progress section
+label "Sprint Progress" 220,420
+  bold: true
+
+label "Frontend — 72%" 220,445
+  font-size: small
+
+progress "frontend" 220,462 555x8
+  value: 72
+
+label "Backend — 45%" 220,485
+  font-size: small
+
+progress "backend" 220,502 555x8
+  value: 45
+
+label "Testing — 28%" 220,525
+  font-size: small
+
+progress "testing" 220,542 555x8
+  value: 28
+
+badge "On Track" 700,420 80x22
+  variant: success

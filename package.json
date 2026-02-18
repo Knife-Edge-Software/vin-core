@@ -1,0 +1,32 @@
+{
+  "name": "@vin/core",
+  "version": "0.1.0",
+  "description": "Text-based wireframe markup language — parser, renderer, and CLI",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Knife-Edge-Software/vin-core.git"
+  },
+  "exports": {
+    ".": "./index.js"
+  },
+  "bin": {
+    "vin": "./cli.js"
+  },
+  "files": [
+    "index.js",
+    "cli.js",
+    "src/",
+    "docs/",
+    "examples/"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "render": "node cli.js render",
+    "viewer": "node viewer/serve.js"
+  },
+  "dependencies": {
+    "lucide-static": "^0.574.0"
+  }
+}

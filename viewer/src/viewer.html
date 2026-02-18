@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vin Viewer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #1e1e1e;
+      color: #ccc;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 16px;
+      background: #252526;
+      border-bottom: 1px solid #333;
+      font-size: 13px;
+    }
+
+    .toolbar label { color: #999; }
+
+    .toolbar select {
+      background: #333;
+      color: #ccc;
+      border: 1px solid #555;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 13px;
+    }
+
+    .toolbar .title {
+      font-weight: 600;
+      color: #ddd;
+      margin-right: 8px;
+    }
+
+    .toolbar .spacer { flex: 1; }
+
+    .toolbar .warnings {
+      color: #ff9800;
+      font-size: 12px;
+    }
+
+    .toolbar button {
+      background: #007acc;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .toolbar button:hover {
+      background-color: #005f99;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .editor-panel {
+      width: 45%;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #333;
+    }
+
+    .editor-panel textarea {
+      flex: 1;
+      background: #1e1e1e;
+      color: #d4d4d4;
+      border: none;
+      padding: 16px;
+      font-family: "Consolas", "Fira Code", "SF Mono", monospace;
+      font-size: 14px;
+      line-height: 1.5;
+      resize: none;
+      outline: none;
+      tab-size: 2;
+    }
+
+    .preview-panel {
+      flex: 1;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #2a2a2a;
+      padding: 24px;
+    }
+
+    .preview-panel svg {
+      box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+      border-radius: 4px;
+    }
+
+    /* Resize handle */
+    .resize-handle {
+      width: 4px;
+      cursor: col-resize;
+      background: transparent;
+    }
+    .resize-handle:hover { background: #4a90d9; }
+
+    /* Page tabs */
+    .page-tabs {
+      display: none;
+      gap: 0;
+      padding: 0 16px;
+      background: #2d2d2d;
+      border-bottom: 1px solid #333;
+      overflow-x: auto;
+    }
+
+    .page-tab {
+      padding: 6px 16px;
+      font-size: 13px;
+      color: #999;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .page-tab:hover { color: #ccc; }
+
+    .page-tab.active {
+      color: #fff;
+      border-bottom-color: #007acc;
+    }
+
+    /* Drag-and-drop overlay */
+    .editor-panel.drag-over { position: relative; }
+    .editor-panel.drag-over::after {
+      content: 'Drop .vin file';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(74, 144, 217, 0.15);
+      border: 2px dashed #4a90d9;
+      color: #4a90d9;
+      font-size: 18px;
+      font-weight: 600;
+      pointer-events: none;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <span class="title">Vin</span>
+    <button id="openFile">Open</button>
+    <input type="file" id="fileInput" accept=".vin" hidden>
+    <label for="examples">Examples:</label>
+    <select id="examples">
+      <option value="">— select —</option>
+      <optgroup label="Simple">
+        <option value="login">Login Screen</option>
+        <option value="error-404">404 Error Page</option>
+        <option value="settings">Settings</option>
+        <option value="signup">Multi-Step Signup</option>
+        <option value="pricing">Pricing Page</option>
+        <option value="confirm-dialog">Confirm Dialog</option>
+      </optgroup>
+      <optgroup label="Medium">
+        <option value="music-player">Music Player</option>
+        <option value="file-browser">File Browser</option>
+        <option value="user-profile">User Profile</option>
+        <option value="calendar">Calendar</option>
+        <option value="smart-home">Smart Home</option>
+        <option value="team-directory">Team Directory</option>
+      </optgroup>
+      <optgroup label="Complex">
+        <option value="dashboard">Dashboard</option>
+        <option value="email-inbox">Email Inbox</option>
+        <option value="chat">Chat App</option>
+        <option value="social-feed">Social Feed</option>
+        <option value="ecommerce-product">Product Page</option>
+        <option value="kanban">Kanban Board</option>
+        <option value="analytics">Analytics Dashboard</option>
+        <option value="photo-editor">Photo Editor</option>
+        <option value="video-player">Video Streaming</option>
+        <option value="ide-layout">Code Editor / IDE</option>
+      </optgroup>
+      <optgroup label="Layout Demos">
+        <option value="settings-form">Settings Form</option>
+        <option value="toolbar-layout">Toolbar Layout</option>
+        <option value="card-grid">Card Grid</option>
+      </optgroup>
+      <optgroup label="Multi-Page">
+        <option value="multi-page-flow">Onboarding Flow</option>
+      </optgroup>
+      <optgroup label="New Controls">
+        <option value="admin-panel">Admin Panel</option>
+        <option value="onboarding-wizard">Onboarding Wizard</option>
+      </optgroup>
+    </select>
+    <button id="exportSvg">Export SVG</button>
+    <button id="exportPng">Export PNG</button>
+    <button id="saveFile">Save .vin</button>
+    <span class="spacer"></span>
+    <span class="warnings" id="warnings"></span>
+  </div>
+
+  <div class="page-tabs" id="pageTabs"></div>
+
+  <div class="main">
+    <div class="editor-panel" id="editorPanel">
+      <textarea id="source" spellcheck="false" placeholder="# Type Vin markup here..."></textarea>
+    </div>
+    <div class="resize-handle" id="resizeHandle"></div>
+    <div class="preview-panel" id="preview"></div>
+  </div>
+
+  <script type="module">
+    import { compile } from '/core/index.js';
+
+    const sourceEl = document.getElementById('source');
+    const previewEl = document.getElementById('preview');
+    const warningsEl = document.getElementById('warnings');
+    const examplesEl = document.getElementById('examples');
+    const pageTabsEl = document.getElementById('pageTabs');
+
+    // --- Helpers ---
+
+    function sanitizeFilename(name) {
+      return name.replace(/[^a-zA-Z0-9_\- ]/g, '').replace(/\s+/g, '-').toLowerCase() || 'untitled';
+    }
+
+    // --- Multi-page state ---
+
+    let compiledPages = [];
+    let currentPageIndex = 0;
+
+    function updatePageTabs() {
+      if (compiledPages.length <= 1) {
+        pageTabsEl.style.display = 'none';
+        return;
+      }
+      pageTabsEl.style.display = 'flex';
+      pageTabsEl.innerHTML = compiledPages.map((p, i) =>
+        `<div class="page-tab${i === currentPageIndex ? ' active' : ''}" data-index="${i}">${p.title}</div>`
+      ).join('');
+    }
+
+    function renderCurrentPage() {
+      const page = compiledPages[currentPageIndex];
+      previewEl.innerHTML = page ? page.svg : '';
+      const title = page?.title;
+      document.title = title && title !== 'Untitled' ? `${title} — Vin` : 'Vin Viewer';
+    }
+
+    // Tab click handler
+    pageTabsEl.addEventListener('click', (e) => {
+      const tab = e.target.closest('.page-tab');
+      if (!tab) return;
+      currentPageIndex = parseInt(tab.dataset.index, 10);
+      updatePageTabs();
+      renderCurrentPage();
+    });
+
+    // --- Live update ---
+
+    let updateTimer = null;
+
+    function update() {
+      const source = sourceEl.value;
+      if (!source.trim()) {
+        compiledPages = [];
+        currentPageIndex = 0;
+        previewEl.innerHTML = '';
+        warningsEl.textContent = '';
+        pageTabsEl.style.display = 'none';
+        document.title = 'Vin Viewer';
+        return;
+      }
+
+      try {
+        const { pages, diagnostics } = compile(source);
+        compiledPages = pages;
+
+        // Clamp current page index
+        if (currentPageIndex >= pages.length) currentPageIndex = pages.length - 1;
+        if (currentPageIndex < 0) currentPageIndex = 0;
+
+        updatePageTabs();
+        renderCurrentPage();
+
+        const warnings = diagnostics.filter(d => d.severity === 'warning');
+        warningsEl.textContent = warnings.length
+          ? `\u26A0 ${warnings.map(d => d.message).join('; ')}`
+          : '';
+      } catch (e) {
+        warningsEl.textContent = `Error: ${e.message}`;
+      }
+    }
+
+    sourceEl.addEventListener('input', () => {
+      clearTimeout(updateTimer);
+      updateTimer = setTimeout(update, 150);
+    });
+
+    // Tab key inserts spaces instead of changing focus
+    sourceEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        const start = sourceEl.selectionStart;
+        const end = sourceEl.selectionEnd;
+        sourceEl.value = sourceEl.value.substring(0, start) + '  ' + sourceEl.value.substring(end);
+        sourceEl.selectionStart = sourceEl.selectionEnd = start + 2;
+        clearTimeout(updateTimer);
+        updateTimer = setTimeout(update, 150);
+      }
+    });
+
+    // --- Examples ---
+
+    const EXAMPLES = {
+      'login': '/examples/login.vin',
+      'error-404': '/examples/error-404.vin',
+      'settings': '/examples/settings.vin',
+      'signup': '/examples/signup.vin',
+      'pricing': '/examples/pricing.vin',
+      'confirm-dialog': '/examples/confirm-dialog.vin',
+      'music-player': '/examples/music-player.vin',
+      'file-browser': '/examples/file-browser.vin',
+      'user-profile': '/examples/user-profile.vin',
+      'calendar': '/examples/calendar.vin',
+      'smart-home': '/examples/smart-home.vin',
+      'team-directory': '/examples/team-directory.vin',
+      'dashboard': '/examples/dashboard.vin',
+      'email-inbox': '/examples/email-inbox.vin',
+      'chat': '/examples/chat.vin',
+      'social-feed': '/examples/social-feed.vin',
+      'ecommerce-product': '/examples/ecommerce-product.vin',
+      'kanban': '/examples/kanban.vin',
+      'analytics': '/examples/analytics.vin',
+      'photo-editor': '/examples/photo-editor.vin',
+      'video-player': '/examples/video-player.vin',
+      'ide-layout': '/examples/ide-layout.vin',
+      'settings-form': '/examples/settings-form.vin',
+      'toolbar-layout': '/examples/toolbar-layout.vin',
+      'card-grid': '/examples/card-grid.vin',
+      'multi-page-flow': '/examples/multi-page-flow.vin',
+      'admin-panel': '/examples/admin-panel.vin',
+      'onboarding-wizard': '/examples/onboarding-wizard.vin',
+    };
+
+    examplesEl.addEventListener('change', async () => {
+      const name = examplesEl.value;
+      if (!name || !EXAMPLES[name]) return;
+      try {
+        const res = await fetch(EXAMPLES[name]);
+        if (!res.ok) throw new Error(res.statusText);
+        sourceEl.value = await res.text();
+        currentPageIndex = 0;
+        update();
+      } catch (e) {
+        warningsEl.textContent = `Failed to load example: ${e.message}`;
+      }
+    });
+
+    // --- Resize handle ---
+
+    const editorPanel = document.getElementById('editorPanel');
+    const resizeHandle = document.getElementById('resizeHandle');
+
+    let resizing = false;
+    resizeHandle.addEventListener('mousedown', (e) => {
+      resizing = true;
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', (e) => {
+      if (!resizing) return;
+      const width = Math.max(200, Math.min(window.innerWidth - 200, e.clientX));
+      editorPanel.style.width = width + 'px';
+    });
+    document.addEventListener('mouseup', () => { resizing = false; });
+
+    // --- Load default example on start ---
+
+    (async () => {
+      try {
+        const res = await fetch(EXAMPLES.login);
+        if (res.ok) {
+          sourceEl.value = await res.text();
+          update();
+        }
+      } catch {
+        // Viewer opened without server — user can type manually
+      }
+    })();
+
+    // --- Export functionality ---
+
+    const exportSvgBtn = document.getElementById('exportSvg');
+    const exportPngBtn = document.getElementById('exportPng');
+
+    function downloadFile(dataUrl, filename) {
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    exportSvgBtn.addEventListener('click', () => {
+      const svgContent = previewEl.innerHTML;
+      if (!svgContent.trim()) {
+        alert('No SVG content to export.');
+        return;
+      }
+      const page = compiledPages[currentPageIndex];
+      const name = sanitizeFilename(page?.title || 'untitled');
+      const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      downloadFile(url, `${name}.svg`);
+      URL.revokeObjectURL(url);
+    });
+
+    exportPngBtn.addEventListener('click', () => {
+      const svgElement = previewEl.querySelector('svg');
+      if (!svgElement) {
+        alert('No SVG content to export.');
+        return;
+      }
+
+      const svgData = new XMLSerializer().serializeToString(svgElement);
+      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const svgUrl = URL.createObjectURL(svgBlob);
+
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        // Scale factor for higher resolution PNG
+        const scale = 2; 
+        canvas.width = svgElement.clientWidth * scale;
+        canvas.height = svgElement.clientHeight * scale;
+        const ctx = canvas.getContext('2d');
+        
+        // Fill with white background, as transparent PNGs might not be desired
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        URL.revokeObjectURL(svgUrl);
+        
+        const page = compiledPages[currentPageIndex];
+        const name = sanitizeFilename(page?.title || 'untitled');
+        const pngUrl = canvas.toDataURL('image/png');
+        downloadFile(pngUrl, `${name}.png`);
+      };
+      img.onerror = (err) => {
+        console.error('Error loading SVG for PNG export:', err);
+        alert('Failed to export PNG. Check console for details.');
+        URL.revokeObjectURL(svgUrl);
+      };
+      img.src = svgUrl;
+    });
+
+    // --- Save .vin file ---
+
+    const saveFileBtn = document.getElementById('saveFile');
+
+    function saveVinFile() {
+      const source = sourceEl.value;
+      if (!source.trim()) {
+        alert('Nothing to save.');
+        return;
+      }
+      const title = compiledPages[0]?.title || 'untitled';
+      const filename = sanitizeFilename(title) + '.vin';
+      const blob = new Blob([source], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      downloadFile(url, filename);
+      URL.revokeObjectURL(url);
+    }
+
+    saveFileBtn.addEventListener('click', saveVinFile);
+
+    // --- Open .vin file ---
+
+    const openFileBtn = document.getElementById('openFile');
+    const fileInput = document.getElementById('fileInput');
+
+    function openVinFile() {
+      fileInput.click();
+    }
+
+    function loadFileContent(text) {
+      sourceEl.value = text;
+      examplesEl.value = '';
+      currentPageIndex = 0;
+      update();
+    }
+
+    openFileBtn.addEventListener('click', openVinFile);
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => loadFileContent(reader.result);
+      reader.readAsText(file);
+      fileInput.value = '';
+    });
+
+    // --- Drag and drop ---
+
+    editorPanel.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      editorPanel.classList.add('drag-over');
+    });
+
+    editorPanel.addEventListener('dragleave', (e) => {
+      if (!editorPanel.contains(e.relatedTarget)) {
+        editorPanel.classList.remove('drag-over');
+      }
+    });
+
+    editorPanel.addEventListener('drop', (e) => {
+      e.preventDefault();
+      editorPanel.classList.remove('drag-over');
+      const file = Array.from(e.dataTransfer.files).find(f => f.name.endsWith('.vin'));
+      if (!file) {
+        warningsEl.textContent = 'Only .vin files can be dropped here.';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => loadFileContent(reader.result);
+      reader.readAsText(file);
+    });
+
+    // --- Keyboard shortcuts ---
+
+    document.addEventListener('keydown', (e) => {
+      const mod = e.ctrlKey || e.metaKey;
+      if (mod && e.key === 's') {
+        e.preventDefault();
+        saveVinFile();
+      } else if (mod && e.key === 'o') {
+        e.preventDefault();
+        openVinFile();
+      }
+    });
+  </script>
+</body>
+</html>

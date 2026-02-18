@@ -1,0 +1,199 @@
+# Team Directory
+# People directory with avatars, cards, and breadcrumbs
+
+page "Team" 780x720
+
+# -- Header --
+
+panel "header" 0,0 780x48
+
+breadcrumb "nav" 16,18
+  items: "Company" | "Engineering" | "Frontend Team"
+
+textfield "search" 540,9 224x30
+  placeholder: "Search people..."
+
+# -- Team Stats --
+
+card "stat1" 20,64 175x70
+label "Team Size" 36,82
+  font-size: small
+heading "12" 36,106
+
+card "stat2" 210,64 175x70
+label "Open Roles" 226,82
+  font-size: small
+heading "3" 226,106
+
+card "stat3" 400,64 175x70
+label "Avg Tenure" 416,82
+  font-size: small
+heading "2.4 yr" 416,106
+
+card "stat4" 590,64 175x70
+label "Locations" 606,82
+  font-size: small
+heading "4" 606,106
+
+separator "s1" 20,150 740x2
+
+# -- Team Lead --
+
+label "Team Lead" 20,170
+  bold: true
+
+card "lead" 20,190 740x80
+
+avatar "SC" 40,206 48x48
+  variant: blue
+  status: online
+
+heading "Sarah Chen" 104,210
+  level: 2
+
+label "Staff Engineer — San Francisco" 104,236
+  font-size: small
+
+badge "Lead" 300,230 42x20
+  variant: info
+
+link "View Profile" 660,222
+
+# -- Members --
+
+label "Members" 20,290
+  bold: true
+
+tabs "filter" 20,312 400x32
+  items: "All" | "Engineers" | "Designers" | "PMs"
+  active: 0
+
+# Row 1
+
+card "m1" 20,358 240x140
+
+avatar "AJ" 40,376 40x40
+  variant: green
+  status: online
+
+label "Alice Johnson" 92,388
+  bold: true
+
+label "Senior Engineer" 92,406
+  font-size: small
+
+label "San Francisco, CA" 40,430
+  font-size: small
+
+badge "Frontend" 40,452 64x18
+  variant: info
+
+badge "React" 112,452 48x18
+
+card "m2" 275,358 240x140
+
+avatar "BM" 295,376 40x40
+  variant: orange
+  status: busy
+
+label "Bob Martinez" 347,388
+  bold: true
+
+label "Engineer" 347,406
+  font-size: small
+
+label "Austin, TX" 295,430
+  font-size: small
+
+badge "Frontend" 295,452 64x18
+  variant: info
+
+badge "Vue" 367,452 38x18
+
+card "m3" 530,358 230x140
+
+avatar "CD" 550,376 40x40
+  variant: purple
+  status: away
+
+label "Carol Davis" 602,388
+  bold: true
+
+label "Designer" 602,406
+  font-size: small
+
+label "New York, NY" 550,430
+  font-size: small
+
+badge "Design" 550,452 52x18
+  variant: warning
+
+badge "Figma" 610,452 48x18
+
+# Row 2
+
+card "m4" 20,512 240x140
+
+avatar "DW" 40,530 40x40
+  variant: red
+
+label "Dan Wilson" 92,542
+  bold: true
+
+label "Engineer" 92,560
+  font-size: small
+
+label "London, UK" 40,584
+  font-size: small
+
+badge "Backend" 40,606 58x18
+  variant: success
+
+card "m5" 275,512 240x140
+
+avatar "EL" 295,530 40x40
+  variant: blue
+  status: online
+
+label "Emily Lee" 347,542
+  bold: true
+
+label "PM" 347,560
+  font-size: small
+
+label "San Francisco, CA" 295,584
+  font-size: small
+
+badge "Product" 295,606 58x18
+  variant: warning
+
+card "m6" 530,512 230x140
+
+avatar "FK" 550,530 40x40
+  variant: green
+
+label "Frank Kim" 602,542
+  bold: true
+
+label "Engineer" 602,560
+  font-size: small
+
+label "Seoul, KR" 550,584
+  font-size: small
+
+badge "Full Stack" 550,606 72x18
+  variant: info
+
+# -- Pagination --
+
+label "Showing 6 of 12" 20,672
+  font-size: small
+
+button "<" 620,668 32x28
+
+button "1" 658,668 32x28
+  variant: primary
+
+button "2" 696,668 32x28
+
+button ">" 734,668 32x28

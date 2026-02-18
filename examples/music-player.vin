@@ -1,0 +1,56 @@
+# Music Player
+# Spotify-inspired player with playlist
+
+page "Music Player" 380x700
+
+# -- Now Playing --
+
+frame "now-playing" 0,0 380x340
+
+image "Album Art" 65,20 250x250
+  alt: "Album Cover"
+
+heading "Midnight City" 65,285
+  level: 2
+
+label "M83 — Hurry Up, We're Dreaming" 65,310
+  font-size: small
+
+# -- Playback Controls --
+
+progress "track" 30,350 320x6
+  value: 38
+
+label "1:24" 30,365
+  font-size: small
+
+label "3:42" 340,365
+  font-size: small
+
+# Control buttons
+button "<<" 90,385 50x36
+
+button "||" 150,385 80x36
+  variant: primary
+
+button ">>" 240,385 50x36
+
+# Volume
+label "Vol" 30,440
+  font-size: small
+
+progress "volume" 62,443 240x6
+  value: 65
+
+icon "speaker" 315,434 24x24
+
+separator "s1" 0,468 380x2
+
+# -- Queue --
+
+label "Up Next" 20,485
+  bold: true
+
+list "queue" 10,505 360x180
+  items: "Outro — M83" | "Wait — M83" | "Reunion — M83" | "Steve McQueen — M83" | "Raconte-Moi Une Histoire — M83" | "Claudia Lewis — M83" | "Go! — M83"
+  selected: 0

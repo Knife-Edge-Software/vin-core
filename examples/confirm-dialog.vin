@@ -1,0 +1,37 @@
+# Confirmation Dialog
+# Modal overlay example with backdrop
+
+page "Delete Confirmation" 500x350
+
+# -- Background content (dimmed) --
+
+label "My Documents" 20,20
+  bold: true
+
+list "files" 20,44 460x200
+  items: "project-report.pdf" | "meeting-notes.md" | "budget-2026.xlsx" | "team-photo.png" | "presentation.pptx" | "archive.zip" | "README.md"
+  selected: 2
+
+# -- Modal Overlay --
+
+modal "Delete File?" 50,30 400x280
+
+# Modal body content
+
+label "Are you sure you want to delete" 90,108
+label "budget-2026.xlsx?" 90,128
+  bold: true
+
+label "This action cannot be undone. The file" 90,162
+  font-size: small
+label "will be permanently removed from your" 90,180
+  font-size: small
+label "account and all shared workspaces." 90,198
+  font-size: small
+
+checkbox "Don't ask me again" 90,228
+
+button "Cancel" 188,260 100x34
+
+button "Delete" 296,260 100x34
+  variant: danger

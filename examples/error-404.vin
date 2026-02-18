@@ -1,0 +1,28 @@
+# 404 Error Page
+# Minimal page-not-found screen
+
+page "Not Found" 500x360
+
+heading "404" 200,60
+  level: 1
+
+heading "Page Not Found" 140,110
+  level: 2
+
+label "The page you're looking for doesn't exist" 108,155
+  font-size: small
+
+label "or has been moved." 180,175
+  font-size: small
+
+button "Go Home" 140,220 100x36
+  variant: primary
+
+button "Go Back" 250,220 100x36
+
+separator "s1" 100,285 300x2
+
+label "Need help?" 190,310
+  font-size: small
+
+link "Contact Support" 195,334

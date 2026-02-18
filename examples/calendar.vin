@@ -1,0 +1,184 @@
+# Calendar View
+# Monthly calendar with event indicators
+
+page "Calendar" 760x560
+
+# -- Header --
+
+button "<" 20,16 36x30
+
+heading "February 2026" 70,18
+  level: 2
+
+button ">" 260,16 36x30
+
+button "Today" 620,16 60x30
+
+button "Month" 690,16 60x30
+
+separator "h-sep" 0,56 760x2
+
+# -- Day Headers --
+
+label "Sun" 30,72
+  font-size: small
+  bold: true
+
+label "Mon" 138,72
+  font-size: small
+  bold: true
+
+label "Tue" 246,72
+  font-size: small
+  bold: true
+
+label "Wed" 350,72
+  font-size: small
+  bold: true
+
+label "Thu" 458,72
+  font-size: small
+  bold: true
+
+label "Fri" 570,72
+  font-size: small
+  bold: true
+
+label "Sat" 674,72
+  font-size: small
+  bold: true
+
+# -- Week 1 (Feb 1-7) --
+
+separator "w1" 20,92 720x2
+
+label "1" 30,108
+  font-size: small
+
+label "2" 138,108
+  font-size: small
+
+badge "Sprint Plan" 130,124 80x18
+  variant: info
+
+label "3" 246,108
+  font-size: small
+
+label "4" 350,108
+  font-size: small
+
+badge "Design Rev" 342,124 80x18
+  variant: warning
+
+label "5" 458,108
+  font-size: small
+
+label "6" 570,108
+  font-size: small
+
+badge "Deploy v3" 562,124 78x18
+  variant: success
+
+label "7" 674,108
+  font-size: small
+
+# -- Week 2 (Feb 8-14) --
+
+separator "w2" 20,152 720x2
+
+label "8" 30,168
+
+label "9" 138,168
+
+label "10" 246,168
+
+label "11" 350,168
+
+badge "1:1 Meeting" 342,184 82x18
+  variant: info
+
+label "12" 458,168
+
+label "13" 570,168
+
+label "14" 674,168
+
+badge "Valentine" 666,184 78x18
+  variant: error
+
+# -- Week 3 (Feb 15-21) --
+
+separator "w3" 20,212 720x2
+
+label "15" 30,228
+
+label "16" 138,228
+
+label "17" 246,228
+
+badge "TODAY" 240,244 50x18
+  variant: info
+
+label "18" 350,228
+
+label "19" 458,228
+
+badge "Demo Day" 450,244 74x18
+  variant: warning
+
+label "20" 570,228
+
+label "21" 674,228
+
+# -- Week 4 (Feb 22-28) --
+
+separator "w4" 20,272 720x2
+
+label "22" 30,288
+
+label "23" 138,288
+
+label "24" 246,288
+
+label "25" 350,288
+
+label "26" 458,288
+
+badge "Release" 450,304 68x18
+  variant: success
+
+label "27" 570,288
+
+label "28" 674,288
+
+# -- Upcoming Events Sidebar --
+
+separator "w5" 20,332 720x2
+
+separator "side" 540,350 2x200
+  direction: vertical
+
+label "Upcoming Events" 560,356
+  bold: true
+
+list "events" 554,376 190x168
+  items: "Sprint Planning (Mon)" | "Design Review (Wed)" | "1:1 with Manager (Thu)" | "Demo Day (Fri)" | "Release v3.2 (Thu)" | "Team Retro (Fri)"
+
+# -- Mini month view hint --
+
+label "Today's Schedule" 20,356
+  bold: true
+
+frame "event1" 20,376 510x40
+badge "10:00" 28,382 50x20
+  variant: info
+label "Sprint Planning — Room 4A" 84,392
+
+frame "event2" 20,424 510x40
+badge "14:00" 28,430 50x20
+  variant: warning
+label "Design Review — Zoom" 84,440
+
+frame "event3" 20,472 510x40
+badge "16:30" 28,478 50x20
+label "Coffee chat with Alex" 84,488

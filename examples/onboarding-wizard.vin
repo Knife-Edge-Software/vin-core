@@ -1,0 +1,66 @@
+# Onboarding Wizard
+# Showcases stepper, searchfield, chip, toast, skeleton, divider in a focused flow
+
+page "Onboarding" 600x500
+
+# -- Progress stepper at top --
+
+stepper "" 50,20 500x32
+  steps: 5
+  current: 3
+
+divider "" 30,68 540x1
+
+# -- Step content --
+
+heading "Choose Your Interests" 30,90
+  level: 2
+
+label "Select topics to personalize your feed." 30,120
+  font-size: small
+
+# Search for topics
+searchfield "" 30,150 540x34
+  placeholder: "Search topics..."
+
+# Selected chips
+row "selected" 30,200 540x28
+  gap: 8
+
+  chip "Design" 80x28
+    dismissible: true
+
+  chip "Engineering" 100x28
+    dismissible: true
+
+  chip "Product" 80x28
+    dismissible: true
+
+  chip "AI/ML" 72x28
+    dismissible: true
+
+divider "" 30,244 540x1
+
+# Available topics (shown as loading)
+label "Suggested Topics" 30,264
+  bold: true
+
+skeleton "" 30,288 540x60
+  lines: 3
+
+divider "" 30,368 540x1
+
+# -- Bottom actions --
+
+row "actions" 30,390 540x34
+  justify: space-between
+
+  button "Back" 100x34
+
+  button "Continue" 120x34
+    variant: primary
+
+# -- Success toast --
+
+toast "Profile saved!" 140,450 320x40
+  variant: info

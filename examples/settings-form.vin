@@ -1,0 +1,48 @@
+# Settings Form — Auto-Layout Demo
+# Demonstrates column layout with nested rows
+
+page "Settings" 500x540
+
+panel "Settings" 20,20 460x500
+  layout: column
+  padding: 16
+  gap: 10
+
+  heading "Account Settings"
+    level: 2
+
+  separator "s1" 420x2
+
+  label "Display Name"
+  textfield "name" 420x32
+    placeholder: "Enter your name"
+    value: "Jane Developer"
+
+  label "Email Address"
+  textfield "email" 420x32
+    placeholder: "you@example.com"
+    value: "jane@example.com"
+
+  separator "s2" 420x2
+
+  heading "Preferences"
+    level: 3
+
+  toggle "Enable notifications"
+    checked: true
+
+  toggle "Dark mode"
+
+  checkbox "Send weekly digest"
+    checked: true
+
+  separator "s3" 420x2
+
+  row 420x34
+    gap: 10
+    justify: end
+
+    button "Cancel" 90x34
+
+    button "Save" 90x34
+      variant: primary

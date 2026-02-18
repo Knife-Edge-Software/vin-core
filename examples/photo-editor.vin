@@ -1,0 +1,123 @@
+# Photo Editor
+# Image editing app with panels, sliders, tabs, and splitters
+
+page "Photo Editor" 960x640
+
+# -- Top Bar --
+
+panel "topbar" 0,0 960x44
+  variant: dark
+
+heading "PhotoEdit" 16,10
+  level: 2
+
+breadcrumb "path" 130,16
+  items: "Projects" | "Vacation 2026" | "sunset.jpg"
+
+button "Export" 780,8 80x28
+  variant: primary
+
+button "Share" 868,8 76x28
+
+# -- Tools Sidebar --
+
+panel "tools" 0,44 52x596
+  variant: dark
+
+icon "mouse-pointer" 14,60 24x24
+
+icon "crop" 14,96 24x24
+
+icon "paintbrush" 14,132 24x24
+
+icon "eraser" 14,168 24x24
+
+icon "type" 14,204 24x24
+
+icon "shapes" 14,240 24x24
+
+icon "stamp" 14,276 24x24
+
+icon "bandage" 14,312 24x24
+
+# -- Canvas Area --
+
+panel "canvas-bg" 52,44 660x596
+
+image "canvas" 102,72 560x420
+  alt: "sunset.jpg"
+
+# -- Splitter --
+
+splitter "main-split" 712,44 8x596
+  direction: vertical
+
+# -- Properties Panel --
+
+panel "props" 720,44 240x596
+
+tabs "prop-tabs" 720,44 240x34
+  items: "Adjust" | "Filters" | "Layers"
+  active: 0
+
+# -- Adjustment Sliders --
+
+label "Exposure" 736,100
+  font-size: small
+
+slider "exposure" 736,118 208x20
+  value: 55
+
+label "Contrast" 736,152
+  font-size: small
+
+slider "contrast" 736,170 208x20
+  value: 45
+
+label "Highlights" 736,204
+  font-size: small
+
+slider "highlights" 736,222 208x20
+  value: 30
+
+label "Shadows" 736,256
+  font-size: small
+
+slider "shadows" 736,274 208x20
+  value: 60
+
+label "Saturation" 736,308
+  font-size: small
+
+slider "saturation" 736,326 208x20
+  value: 70
+
+label "Temperature" 736,360
+  font-size: small
+
+slider "temperature" 736,378 208x20
+  value: 52
+
+separator "adj-sep" 736,412 208x2
+
+# -- Histogram --
+
+label "Histogram" 736,428
+  font-size: small
+  bold: true
+
+frame "histogram" 736,446 208x80
+
+# -- Color info --
+
+separator "color-sep" 736,540 208x2
+
+label "Color" 736,558
+  font-size: small
+  bold: true
+
+label "R: 214  G: 156  B: 88" 736,578
+  font-size: small
+
+label "#D69C58" 736,596
+  font-size: small

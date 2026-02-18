@@ -1,0 +1,180 @@
+# Email Inbox
+# Gmail-inspired email client
+
+page "Inbox" 960x620
+
+# -- Top Bar --
+
+frame "topbar" 0,0 960x48
+
+heading "Mail" 16,16
+  level: 2
+
+textfield "search" 240,9 440x30
+  placeholder: "Search mail..."
+
+icon "bell" 780,12 24x24
+
+icon "gear" 816,12 24x24
+
+image "avatar" 856,8 32x32
+  alt: "Me"
+
+# -- Sidebar --
+
+frame "sidebar" 0,48 200x572
+
+button "Compose" 16,64 168x36
+  variant: primary
+
+list "folders" 8,116 184x216
+  items: "Inbox (12)" | "Starred" | "Snoozed" | "Sent" | "Drafts (3)" | "Spam" | "Trash" | "Important" | "All Mail"
+  selected: 0
+
+separator "s1" 16,344 168x2
+
+label "Labels" 16,360
+  font-size: small
+  bold: true
+
+list "labels" 8,380 184x96
+  items: "Work" | "Personal" | "Receipts" | "Newsletters"
+
+separator "s2" 16,488 168x2
+
+label "45% of 15 GB used" 16,504
+  font-size: small
+
+progress "storage" 16,524 168x6
+  value: 45
+
+# -- Toolbar --
+
+frame "toolbar" 200,48 760x40
+
+checkbox "select-all" 216,58
+
+button "Archive" 250,55 70x26
+
+button "Delete" 326,55 60x26
+  variant: danger
+
+button "Move" 392,55 54x26
+
+button "Label" 452,55 54x26
+
+label "1–50 of 1,284" 830,62
+  font-size: small
+
+button "<" 910,55 20x26
+
+button ">" 934,55 20x26
+
+# -- Email List --
+
+# Email 1 — unread
+frame "email1" 200,88 760x52
+checkbox "e1" 216,104
+icon "star" 246,102 18x18
+label "Alice Johnson" 274,102
+  bold: true
+label "Q1 Planning Document — Here's the draft for our quarterly goals..." 274,120
+  font-size: small
+label "10:42 AM" 880,102
+  font-size: small
+
+# Email 2 — unread
+frame "email2" 200,140 760x52
+checkbox "e2" 216,156
+icon "star" 246,154 18x18
+label "GitHub" 274,154
+  bold: true
+label "[glint] Pull Request #247: Add wireframe markup support..." 274,172
+  font-size: small
+label "9:15 AM" 880,154
+  font-size: small
+badge "Work" 830,154 42x18
+  variant: info
+
+# Email 3
+frame "email3" 200,192 760x52
+checkbox "e3" 216,208
+icon "star" 246,206 18x18
+label "Bob Martinez" 274,206
+label "Re: Team offsite — Sounds great! I'll bring the projector..." 274,224
+  font-size: small
+label "Yesterday" 874,206
+  font-size: small
+
+# Email 4
+frame "email4" 200,244 760x52
+checkbox "e4" 216,260
+icon "star" 246,258 18x18
+label "Stripe" 274,258
+label "Your invoice for January 2026 — Invoice #INV-2026-0142..." 274,276
+  font-size: small
+label "Yesterday" 874,258
+  font-size: small
+badge "Receipts" 818,258 58x18
+
+# Email 5
+frame "email5" 200,296 760x52
+checkbox "e5" 216,312
+icon "star" 246,310 18x18
+label "Design Team" 274,310
+label "New mockups ready for review — Hi team, I've uploaded the..." 274,328
+  font-size: small
+label "Feb 14" 886,310
+  font-size: small
+badge "Work" 830,310 42x18
+  variant: info
+
+# Email 6
+frame "email6" 200,348 760x52
+checkbox "e6" 216,364
+icon "star" 246,362 18x18
+label "Newsletter" 274,362
+label "This week in tech — Top stories: AI developments, new..." 274,380
+  font-size: small
+label "Feb 14" 886,362
+  font-size: small
+
+# Email 7
+frame "email7" 200,400 760x52
+checkbox "e7" 216,416
+icon "star" 246,414 18x18
+label "Carol Davis" 274,414
+label "Conference talk submission — I submitted our proposal for..." 274,432
+  font-size: small
+label "Feb 13" 886,414
+  font-size: small
+
+# Email 8
+frame "email8" 200,452 760x52
+checkbox "e8" 216,468
+icon "star" 246,466 18x18
+label "Vercel" 274,466
+label "Deployment successful — glint-app was deployed to production..." 274,484
+  font-size: small
+label "Feb 13" 886,466
+  font-size: small
+
+# Email 9
+frame "email9" 200,504 760x52
+checkbox "e9" 216,520
+icon "star" 246,518 18x18
+label "Dan Wilson" 274,518
+label "Re: Code review feedback — Thanks for the thorough review!..." 274,536
+  font-size: small
+label "Feb 12" 886,518
+  font-size: small
+
+# Email 10
+frame "email10" 200,556 760x52
+checkbox "e10" 216,572
+icon "star" 246,570 18x18
+label "Security Team" 274,570
+label "Monthly security report — No critical issues found in..." 274,588
+  font-size: small
+label "Feb 12" 886,570
+  font-size: small

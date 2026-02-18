@@ -1,0 +1,73 @@
+# Admin Panel
+# Showcases navbar, sidebar, searchfield, chip, toast, stepper, skeleton, menu, divider
+
+page "Admin Panel" 960x640
+
+# -- Top navbar --
+
+navbar "Acme Admin" 0,0 960x48
+  items: "Dashboard" | "Users" | "Settings" | "Help"
+
+# -- Toast notification --
+
+toast "Deployment completed successfully." 520,56 420x44
+  variant: success
+
+# -- Sidebar navigation --
+
+sidebar "Admin" 0,48 200x592
+  items: "Dashboard" | "Users" | "Products" | "Orders" | "Analytics" | "Settings"
+  active: 1
+
+# -- Main content area --
+
+# Search + filter bar
+searchfield "" 220,68 300x34
+  placeholder: "Search users..."
+
+chip "Active" 536,71 72x28
+
+chip "Admin" 616,71 68x28
+  dismissible: true
+
+chip "Recent" 692,71 76x28
+  dismissible: true
+
+divider "" 220,112 720x1
+
+# -- User onboarding stepper --
+
+label "New User Onboarding" 220,128
+  bold: true
+
+stepper "" 220,152 500x32
+  steps: 4
+  current: 2
+
+label "Step 3 of 4 — Assign Permissions" 220,192
+  font-size: small
+
+divider "" 220,214 720x1
+
+# -- User table --
+
+label "All Users" 220,230
+  bold: true
+
+table "users" 220,252 720x200
+  columns: "Name" | "Email" | "Role" | "Status" | "Last Active"
+  rows: 6
+
+# -- Loading section --
+
+label "Activity Feed" 220,472
+  bold: true
+
+skeleton "" 220,496 720x80
+  lines: 4
+
+# -- Context menu (floating) --
+
+menu "" 780,128 160x160
+  items: "Edit" | "Duplicate" | "---" | "Archive" | "Delete"
+  active: 0

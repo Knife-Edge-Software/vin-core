@@ -1,0 +1,66 @@
+# File Browser
+# Finder / Explorer style file manager
+
+page "File Browser" 800x520
+
+# -- Toolbar --
+
+frame "toolbar" 0,0 800x44
+
+button "<" 8,7 32x30
+
+button ">" 44,7 32x30
+
+label "Documents > Projects > Glint" 90,16
+
+textfield "search" 560,7 228x30
+  placeholder: "Search files..."
+
+# -- Sidebar --
+
+frame "sidebar" 0,44 200x476
+
+label "Favorites" 12,60
+  font-size: small
+  bold: true
+
+list "favorites" 4,76 192x96
+  items: "Desktop" | "Documents" | "Downloads" | "Projects"
+  selected: 3
+
+separator "s1" 12,180 176x2
+
+label "Devices" 12,196
+  font-size: small
+  bold: true
+
+list "devices" 4,212 192x48
+  items: "Macintosh HD" | "External SSD"
+
+separator "s2" 12,268 176x2
+
+label "Tags" 12,284
+  font-size: small
+  bold: true
+
+list "tags" 4,300 192x72
+  items: "Important" | "Work" | "Personal"
+
+# -- File Table --
+
+table "files" 200,44 600x420
+  columns: "Name" | "Modified" | "Size" | "Kind"
+  rows: 16
+
+# -- Status Bar --
+
+frame "status" 0,476 800x44
+
+label "23 items, 1.4 GB available" 12,492
+  font-size: small
+
+button "List" 640,484 50x28
+
+button "Grid" 696,484 50x28
+
+button "Col" 752,484 40x28

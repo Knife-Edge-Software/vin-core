@@ -1,0 +1,197 @@
+# Social Media Feed
+# Twitter/X-inspired timeline
+
+page "Feed" 520x900
+
+# -- Header --
+
+frame "header" 0,0 520x48
+
+heading "Home" 20,14
+  level: 2
+
+icon "sparkles" 460,12 24x24
+
+# -- Tab Bar --
+
+button "For You" 0,48 260x36
+  variant: primary
+
+button "Following" 260,48 260x36
+
+separator "tab-sep" 0,84 520x2
+
+# -- Compose Box --
+
+frame "compose" 0,86 520x100
+
+image "my-avatar" 16,100 36x36
+  alt: "Me"
+
+textfield "compose-input" 64,96 360x36
+  placeholder: "What's happening?"
+
+button "Post" 432,96 72x36
+  variant: primary
+
+icon "image" 64,140 24x24
+
+icon "image-play" 96,140 24x24
+
+icon "chart-bar" 128,140 24x24
+
+icon "smile" 160,140 24x24
+
+separator "compose-sep" 0,186 520x2
+
+# -- Post 1 --
+
+frame "post1" 0,188 520x150
+
+image "av1" 16,200 36x36
+  alt: "AJ"
+
+label "Alice Johnson" 64,204
+  bold: true
+
+label "@alicej · 2h" 168,204
+  font-size: small
+
+label "Just shipped the new wireframe markup language!" 64,226
+
+label "It's text-based, AI-friendly, and renders to SVG." 64,244
+
+label "Open source. Check it out." 64,262
+
+badge "Open Source" 64,284 82x18
+  variant: success
+
+label "12" 64,312
+  font-size: small
+
+icon "reply" 82,306 18x18
+
+label "48" 142,312
+  font-size: small
+
+icon "repost" 160,306 18x18
+
+label "247" 222,312
+  font-size: small
+
+icon "heart" 244,306 18x18
+
+icon "share" 316,306 18x18
+
+separator "p1-sep" 16,334 488x2
+
+# -- Post 2 --
+
+frame "post2" 0,338 520x140
+
+image "av2" 16,350 36x36
+  alt: "BM"
+
+label "Bob Martinez" 64,354
+  bold: true
+
+label "@bobm · 4h" 168,354
+  font-size: small
+
+label "Hot take: every design tool should have a text mode." 64,376
+
+label "If an AI can't read your design file, you're doing" 64,394
+
+label "design communication wrong." 64,412
+
+label "34" 64,446
+  font-size: small
+
+label "186" 142,446
+  font-size: small
+
+label "1.2k" 222,446
+  font-size: small
+
+separator "p2-sep" 16,466 488x2
+
+# -- Post 3 (with image) --
+
+frame "post3" 0,470 520x200
+
+image "av3" 16,482 36x36
+  alt: "CD"
+
+label "Carol Davis" 64,486
+  bold: true
+
+label "@carold · 6h" 160,486
+  font-size: small
+
+label "Made this dashboard wireframe in about 5 minutes" 64,508
+
+label "using just a text editor. No design tool needed." 64,526
+
+image "attachment" 64,548 420x80
+  alt: "Dashboard Screenshot"
+
+label "8" 64,644
+  font-size: small
+
+label "52" 142,644
+  font-size: small
+
+label "312" 222,644
+  font-size: small
+
+separator "p3-sep" 16,664 488x2
+
+# -- Post 4 --
+
+frame "post4" 0,668 520x120
+
+image "av4" 16,680 36x36
+  alt: "DW"
+
+label "Dan Wilson" 64,684
+  bold: true
+
+label "@danw · 8h" 160,684
+  font-size: small
+
+label "Working on adding Lua scripting support to the" 64,706
+
+label "wireframe engine. Each control would be a script" 64,724
+
+label "that exports its properties and render function." 64,742
+
+label "21" 64,776
+  font-size: small
+
+label "89" 142,776
+  font-size: small
+
+label "534" 222,776
+  font-size: small
+
+separator "p4-sep" 16,790 488x2
+
+# -- Load More --
+
+button "Show more" 160,810 200x36
+
+# -- Bottom Nav --
+
+separator "nav-sep" 0,860 520x2
+
+frame "bottom-nav" 0,862 520x38
+
+icon "home" 50,868 24x24
+
+icon "search" 154,868 24x24
+
+icon "bell" 258,868 24x24
+
+icon "mail" 362,868 24x24
+
+icon "user" 466,868 24x24

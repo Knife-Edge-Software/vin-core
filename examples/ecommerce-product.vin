@@ -1,0 +1,173 @@
+# E-Commerce Product Page
+# Amazon / Shopify inspired product detail
+
+page "Product" 860x760
+
+# -- Breadcrumb --
+
+label "Home" 20,14
+  font-size: small
+
+label ">" 52,14
+  font-size: small
+
+label "Electronics" 64,14
+  font-size: small
+
+label ">" 122,14
+  font-size: small
+
+label "Headphones" 134,14
+  font-size: small
+
+separator "bc-sep" 0,34 860x2
+
+# -- Product Image --
+
+image "product-main" 20,50 380x380
+  alt: "Product Photo"
+
+# Thumbnail row
+image "thumb1" 20,440 86x86
+  alt: "Front"
+
+image "thumb2" 116,440 86x86
+  alt: "Side"
+
+image "thumb3" 212,440 86x86
+  alt: "Detail"
+
+image "thumb4" 308,440 86x86
+  alt: "Box"
+
+# -- Product Info --
+
+label "Wireless" 430,50
+  font-size: small
+
+heading "ProSound Studio Headphones" 430,72
+  level: 1
+
+heading "Noise Cancelling, 40hr Battery, Hi-Res Audio" 430,102
+  level: 3
+
+# Rating
+label "4.7 out of 5" 430,138
+  font-size: small
+
+badge "Best Seller" 520,133 78x22
+  variant: warning
+
+link "2,847 ratings" 610,138
+
+separator "info-sep" 430,164 400x2
+
+# Price
+heading "$249.99" 430,186
+  level: 2
+
+label "$349.99" 540,190
+  font-size: small
+
+badge "-29%" 600,186 44x22
+  variant: error
+
+label "Free delivery by Fri, Feb 20" 430,220
+  font-size: small
+
+label "Or fastest delivery tomorrow. Order within 4 hrs." 430,240
+  font-size: small
+
+separator "price-sep" 430,264 400x2
+
+# Color selector
+label "Color" 430,280
+  bold: true
+
+button "Black" 430,300 70x30
+
+button "Silver" 508,300 70x30
+
+button "Navy" 586,300 70x30
+
+# Quantity
+label "Quantity" 430,348
+  bold: true
+
+dropdown "qty" 430,368 100x32
+  items: "1" | "2" | "3" | "4" | "5"
+  selected: 0
+
+# Action buttons
+button "Add to Cart" 430,420 400x40
+  variant: primary
+
+button "Buy Now" 430,470 400x40
+
+separator "action-sep" 430,526 400x2
+
+# -- Specifications --
+
+label "Specifications" 430,544
+  bold: true
+
+table "specs" 430,566 400x140
+  columns: "Feature" | "Detail"
+  rows: 5
+
+# -- Reviews Section --
+
+separator "rev-sep" 20,546 390x2
+
+heading "Customer Reviews" 20,566
+  level: 2
+
+label "4.7 out of 5 stars" 20,598
+
+# Rating bars
+label "5 star" 20,626
+  font-size: small
+
+progress "r5" 72,630 260x8
+  value: 72
+
+label "72%" 342,626
+  font-size: small
+
+label "4 star" 20,648
+  font-size: small
+
+progress "r4" 72,652 260x8
+  value: 18
+
+label "18%" 342,648
+  font-size: small
+
+label "3 star" 20,670
+  font-size: small
+
+progress "r3" 72,674 260x8
+  value: 6
+
+label "6%" 342,670
+  font-size: small
+
+label "2 star" 20,692
+  font-size: small
+
+progress "r2" 72,696 260x8
+  value: 2
+
+label "2%" 342,692
+  font-size: small
+
+label "1 star" 20,714
+  font-size: small
+
+progress "r1" 72,718 260x8
+  value: 2
+
+label "2%" 342,714
+  font-size: small
+
+button "Write a Review" 20,740 180x32

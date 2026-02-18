@@ -1,0 +1,165 @@
+# Chat Application
+# Slack / Discord inspired messaging interface
+
+page "Chat" 900x600
+
+# -- Server/Workspace Sidebar --
+
+frame "servers" 0,0 56x600
+
+image "ws1" 10,10 36x36
+  alt: "WS"
+
+separator "ws-s1" 12,54 32x2
+
+image "ws2" 10,64 36x36
+  alt: "KE"
+
+image "ws3" 10,108 36x36
+  alt: "OS"
+
+image "ws4" 10,152 36x36
+  alt: "GD"
+
+# -- Channel Sidebar --
+
+frame "channels" 56,0 200x600
+
+heading "Knife Edge" 72,18
+  level: 2
+
+textfield "channel-search" 64,44 184x28
+  placeholder: "Search channels"
+
+label "Channels" 72,88
+  font-size: small
+  bold: true
+
+list "channel-list" 60,104 188x168
+  items: "#general" | "#engineering" | "#design" | "#random" | "#releases" | "#support" | "#standups"
+  selected: 1
+
+separator "ch-sep" 72,280 168x2
+
+label "Direct Messages" 72,296
+  font-size: small
+  bold: true
+
+list "dms" 60,312 188x120
+  items: "Alice Johnson" | "Bob Martinez" | "Carol Davis" | "Dan Wilson" | "Engineering Bot"
+  selected: 0
+
+# -- Chat Header --
+
+frame "chat-header" 256,0 644x48
+
+label "#engineering" 272,12
+  bold: true
+
+label "Building the future, one commit at a time" 272,32
+  font-size: small
+
+icon "search" 800,12 24x24
+
+icon "pin" 832,12 24x24
+
+icon "people" 864,12 24x24
+
+separator "ch-div" 256,48 644x2
+
+# -- Messages --
+
+# Message 1
+frame "msg1" 270,60 600x68
+image "av1" 274,66 32x32
+  alt: "AJ"
+label "Alice Johnson" 314,72
+  bold: true
+label "10:24 AM" 410,72
+  font-size: small
+label "Hey team, the new wireframe format is looking great." 314,92
+label "Anyone had a chance to test the parser yet?" 314,110
+  font-size: small
+
+# Message 2
+frame "msg2" 270,136 600x56
+image "av2" 274,142 32x32
+  alt: "BM"
+label "Bob Martinez" 314,148
+  bold: true
+label "10:31 AM" 412,148
+  font-size: small
+label "Yeah! I wrote a dashboard mockup with it. Super intuitive." 314,168
+
+# Message 3
+frame "msg3" 270,200 600x80
+image "av3" 274,206 32x32
+  alt: "CD"
+label "Carol Davis" 314,212
+  bold: true
+label "10:45 AM" 400,212
+  font-size: small
+label "I tried it too. A few thoughts:" 314,232
+label "1. The frame control is perfect for card layouts" 314,250
+  font-size: small
+label "2. Would be nice to have a tabs control" 314,268
+  font-size: small
+
+# Message 4 — with reaction
+frame "msg4" 270,288 600x68
+image "av4" 274,294 32x32
+  alt: "DW"
+label "Dan Wilson" 314,300
+  bold: true
+label "11:02 AM" 400,300
+  font-size: small
+label "Just pushed a PR that adds table support to the renderer." 314,320
+
+badge "+3" 314,340 30x18
+  variant: info
+
+badge "ship-it" 350,340 52x18
+  variant: success
+
+# Message 5
+frame "msg5" 270,364 600x56
+image "av1b" 274,370 32x32
+  alt: "AJ"
+label "Alice Johnson" 314,376
+  bold: true
+label "11:15 AM" 410,376
+  font-size: small
+label "Nice work Dan! Merging now." 314,396
+
+# Unread divider
+separator "unread" 290,430 580x2
+badge "New" 548,422 40x18
+  variant: error
+
+# Message 6
+frame "msg6" 270,446 600x56
+image "av5" 274,452 32x32
+  alt: "EB"
+label "Engineering Bot" 314,458
+  bold: true
+label "11:30 AM" 428,458
+  font-size: small
+label "Build #1847 passed. All 142 tests green." 314,478
+
+badge "CI" 600,478 28x18
+  variant: success
+
+# -- Message Input --
+
+frame "input-area" 256,516 644x84
+
+textfield "message" 272,530 520x36
+  placeholder: "Message #engineering"
+
+button "+" 800,530 36x36
+
+button "Send" 844,530 44x36
+  variant: primary
+
+label "Ctrl+Enter to send" 272,576
+  font-size: small

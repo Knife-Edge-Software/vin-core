@@ -1,0 +1,90 @@
+# Toolbar Layout — Auto-Layout Demo
+# Demonstrates row layout and nested column panels
+
+page "Editor" 800x500
+
+# -- Top Toolbar (no label — pure layout container) --
+panel 0,0 800x48
+  layout: row
+  padding: 8
+  gap: 4
+  align: center
+
+  button "New" 60x32
+    variant: primary
+  button "Open" 60x32
+  button "Save" 60x32
+  separator "sep1" 2x24
+    direction: vertical
+  button "Cut" 50x32
+  button "Copy" 56x32
+  button "Paste" 60x32
+  separator "sep2" 2x24
+    direction: vertical
+  button "Undo" 56x32
+  button "Redo" 56x32
+
+# -- Sidebar --
+panel "Explorer" 0,48 200x452
+  layout: column
+  padding: 12
+  gap: 6
+
+  separator "ss" 176x2
+
+  label "Project Files"
+    font-size: small
+
+  row 176x20
+    gap: 6
+    icon "folder" 16x16
+    label "src"
+
+  row 176x20
+    gap: 6
+    icon "folder" 16x16
+    label "components"
+
+  row 176x20
+    gap: 6
+    icon "document" 16x16
+    label "index.html"
+
+  row 176x20
+    gap: 6
+    icon "document" 16x16
+    label "styles.css"
+
+  row 176x20
+    gap: 6
+    icon "code" 16x16
+    label "app.js"
+
+  row 176x20
+    gap: 6
+    icon "code" 16x16
+    label "utils.js"
+
+# -- Editor Area --
+panel "editor" 200,48 600x420
+  variant: default
+
+tabs "editor-tabs" 200,48 600x34
+  items: "app.js" | "styles.css" | "index.html"
+  active: 0
+
+# -- Status Bar (no label — tight layout) --
+panel 200,468 600x32
+  layout: row
+  padding: 6
+  gap: 12
+  align: center
+
+  label "Ln 42, Col 18"
+    font-size: small
+  label "UTF-8"
+    font-size: small
+  label "JavaScript"
+    font-size: small
+  badge "Saved" 50x18
+    variant: success

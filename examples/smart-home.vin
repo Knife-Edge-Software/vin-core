@@ -1,0 +1,142 @@
+# Smart Home Dashboard
+# IoT control panel with toggles, sliders, cards, and panels
+
+page "Smart Home" 800x620
+
+# -- Header --
+
+panel "header" 0,0 800x50
+  variant: dark
+
+heading "Smart Home" 16,12
+  level: 2
+
+avatar "JB" 720,5 40x40
+  variant: blue
+  status: online
+
+# -- Room Tabs --
+
+tabs "rooms" 0,50 800x36
+  items: "Living Room" | "Bedroom" | "Kitchen" | "Garage"
+  active: 0
+
+# -- Temperature Card --
+
+card "Temperature" 20,106 370x140
+
+label "Current Temperature" 36,138
+  font-size: small
+
+heading "72F" 36,164
+  level: 1
+
+label "Target" 36,200
+  font-size: small
+
+slider "temp" 36,218 300x20
+  value: 68
+
+# -- Lighting Card --
+
+card "Lighting" 410,106 370x140
+
+label "Brightness" 426,138
+  font-size: small
+
+heading "80%" 426,164
+  level: 1
+
+slider "brightness" 426,200 300x20
+  value: 80
+
+toggle "Auto Dimming" 426,228
+  on: true
+
+# -- Devices --
+
+label "Devices" 20,268
+  bold: true
+
+# Device row 1
+
+card "d1" 20,290 180x120
+
+icon "lightbulb" 40,308 24x24
+
+label "Ceiling Light" 72,316
+
+toggle "light-1" 40,340
+  on: true
+
+badge "On" 140,340 36x18
+  variant: success
+
+# Device row 2
+
+card "d2" 215,290 180x120
+
+icon "thermometer" 235,308 24x24
+
+label "Thermostat" 267,316
+
+toggle "thermo-1" 235,340
+  on: true
+
+badge "72F" 360,340 36x18
+  variant: info
+
+# Device row 3
+
+card "d3" 410,290 180x120
+
+icon "speaker" 430,308 24x24
+
+label "Smart Speaker" 462,316
+
+toggle "speaker-1" 430,340
+  on: false
+
+badge "Off" 556,340 36x18
+
+# Device row 4
+
+card "d4" 605,290 175x120
+
+icon "lock" 625,308 24x24
+
+label "Front Door" 657,316
+
+toggle "lock-1" 625,340
+  on: true
+
+badge "Locked" 726,336 50x18
+  variant: success
+
+# -- Energy Panel --
+
+panel "energy" 20,430 760x80
+  variant: accent
+
+label "Energy Usage Today" 36,450
+  bold: true
+
+progress "energy-bar" 36,470 680x8
+  value: 42
+
+label "4.2 kWh of 10 kWh budget" 36,492
+  font-size: small
+
+# -- Scene Buttons --
+
+label "Quick Scenes" 20,530
+  bold: true
+
+button "Movie Night" 20,554 120x36
+  variant: primary
+
+button "Good Morning" 150,554 130x36
+
+button "Away Mode" 290,554 120x36
+
+button "Sleep" 420,554 100x36
