@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Knife-Edge-Software/vin-core.git"
+    "url": "https://github.com/Glint-Software/vin-core.git"
   },
   "exports": {
     ".": "./index.js"
